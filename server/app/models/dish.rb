@@ -1,5 +1,5 @@
 class Dish < ApplicationRecord
   belongs_to :restaurant
-  has_many :user_dishes
-  has_many :users, through: :user_dishes
+  has_many :posts, dependent: :destroy
+  has_many :users, through: :posts
 end
