@@ -1,0 +1,8 @@
+.app {
+  width: 100vw;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 100px 1fr min-content;
+  grid-template-columns: 1fr;
+  /* grid-template: 100px 1fr min-content / 1fr; */
+}
