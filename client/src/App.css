@@ -6,3 +6,12 @@
   grid-template-columns: 1fr;
   /* grid-template: 100px 1fr min-content / 1fr; */
 }
+
+.header {
+  width: 100%;
+  height: 100px;
+  background-color: rgb(10, 247, 243);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
