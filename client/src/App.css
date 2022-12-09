@@ -16,6 +16,8 @@
   align-items: center;
 }
 
+/*** Login */
+
 .login-module {
   display: flex;
   flex-flow: column nowrap;
@@ -36,6 +38,16 @@
   grid-template: 1fr 1fr 1fr / 1fr 1fr;
   gap: 40px 0;
   text-align: center;
+}
+
+.signup {
+  grid-template: 1fr 1fr 1fr 1fr / 1fr 1fr;
+}
+
+.login-submit {
+  justify-self: center;
+  grid-column-start: 1;
+  grid-column-end: 3;
 }
 
 .login-form input {
