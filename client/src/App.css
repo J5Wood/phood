@@ -15,3 +15,46 @@
   justify-content: center;
   align-items: center;
 }
+
+.login-module {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 50px;
+}
+
+.login-header {
+  font-size: 36px;
+  padding: 30px 0;
+}
+
+.login-form {
+  font-size: 18px;
+  display: grid;
+  grid-template: 1fr 1fr 1fr / 1fr 1fr;
+  gap: 40px 0;
+  text-align: center;
+}
+
+.login-form input {
+  height: 25px;
+  width: min(45vw, 150px);
+}
+
+.login-splitter {
+  font-size: 22px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  width: 100%;
+}
+
+.login-splitter span {
+  width: 35vw;
+  height: 2px;
+  background-color: black;
+}
