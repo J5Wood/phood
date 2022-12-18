@@ -12,9 +12,9 @@ export function LoginModule() {
     const key = event.target.id;
     setLoginInfo({ ...loginInfo, [key]: event.target.value });
   }
-  function handleLoginSubmit() {
+  async function handleLoginSubmit() {
+    await login([loginInfo.email, loginInfo.password]);
     debugger;
-    login;
   }
 
   return (

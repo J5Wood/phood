@@ -1,8 +1,9 @@
-class SessionController < ApplicationController
+class SessionsController < ApplicationController
 
-    def login
-        user = User.find_by(email: params[:email])
-        if !!user && user.authenticate(params[:password])
+    def create
+        user = User.find_by(email: session_params[:email])
+        if !!user && user.authenticate(session_params[:password])
+            byebug
             render json: UserSerializer.new(user)
         else
             render json: {status: "error", message: "Must contain a valid username and password"}
