@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { redirect } from "react-router-dom";
 import { login } from "./actions/UserActions";
 
 export function LoginModule() {
@@ -12,9 +13,14 @@ export function LoginModule() {
     const key = event.target.id;
     setLoginInfo({ ...loginInfo, [key]: event.target.value });
   }
+
   async function handleLoginSubmit(e) {
     e.preventDefault();
-    login([loginInfo.email, loginInfo.password]);
+    const response = await login([loginInfo.email, loginInfo.password]);
+    // debugger;
+    localStorage.setItem("token", response.attributes.token);
+    debugger;
+    return redirect("/dashboard");
   }
 
   return (

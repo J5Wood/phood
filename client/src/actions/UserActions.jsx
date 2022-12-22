@@ -13,5 +13,6 @@ export async function login(credentials) {
   };
   const resp = await fetch("http://localhost:3001/sessions", configObj);
   const data = await resp.json();
-  localStorage.setItem("token", data.data.attributes.token);
+  return data.data;
+  // ***** Add reaction to bad data.
 }
