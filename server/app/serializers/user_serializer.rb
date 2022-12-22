@@ -1,5 +1,8 @@
 class UserSerializer
     include JSONAPI::Serializer
-    attributes :email
     has_many :posts
+
+    attribute :token do |object|
+      "#{object.get_token}"
+    end
   end
