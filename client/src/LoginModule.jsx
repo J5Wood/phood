@@ -12,15 +12,15 @@ export function LoginModule() {
     const key = event.target.id;
     setLoginInfo({ ...loginInfo, [key]: event.target.value });
   }
-  async function handleLoginSubmit() {
-    await login([loginInfo.email, loginInfo.password]);
-    debugger;
+  async function handleLoginSubmit(e) {
+    e.preventDefault();
+    login([loginInfo.email, loginInfo.password]);
   }
 
   return (
     <div className="login-module">
       <h2 className="login-header">Login</h2>
-      <form className="login-form" onSubmit={handleLoginSubmit}>
+      <form className="login-form" onSubmit={(e) => handleLoginSubmit(e)}>
         <label htmlFor="email">Email</label>
         <input
           type="text"

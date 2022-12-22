@@ -3,7 +3,6 @@ export async function login(credentials) {
     email: credentials[0],
     password: credentials[1],
   };
-  debugger;
   let configObj = {
     method: "POST",
     headers: {
@@ -13,19 +12,7 @@ export async function login(credentials) {
     body: JSON.stringify(creds),
   };
   const resp = await fetch("http://localhost:3001/sessions", configObj);
-  // .then((resp) => {
-  //   console.log(resp);
-  //   resp.json();
-  // })
-  // .then((sessionData) => {
-  //   console.log("1", sessionData);
-  //   if (sessionData.status === "error") {
-  //     console.log("error");
-  //   }
-  //   console.log("2", sessionData);
-  //   debugger;
-  //   localStorage.setItem("token", sessionData.data.attributes.token);
-  // })
+  const data = await resp.json().data;
+  localStorage.setItem("token", data.attributes.token);
   debugger;
-  // .catch(() => console.log("error"));
 }
