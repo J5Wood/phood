@@ -6,12 +6,10 @@ class UsersController < ApplicationController
     end
 
     def create
-        # byebug
         if User.find_by(email: user_params[:email])
             render json: {status: "error", message: "That email is already registered"}
             return
         end
-        # byebug
         user = User.new(user_params)
         user.user_id = SecureRandom.uuid
         if user.save
@@ -24,8 +22,7 @@ class UsersController < ApplicationController
     private 
     
     def user_params
-        params.require(:user).permit(:email, :password)
-
+        params.permit(:email, :password)
     end
 
 end

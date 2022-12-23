@@ -30,7 +30,6 @@ export async function signup(credentials) {
     },
     body: JSON.stringify(creds),
   };
-  // debugger;
   const resp = await fetch("http://localhost:3001/users", configObj);
   const data = await resp.json();
   return data;

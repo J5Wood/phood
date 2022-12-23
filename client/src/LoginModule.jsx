@@ -36,12 +36,12 @@ export function LoginModule() {
       console.log("Passwords must match!!!");
     const response = await signup([signupInfo.email, signupInfo.password]);
 
-    // debugger;
     if (response.status === "error") {
       console.log(response.message);
       return;
     }
-    localStorage.setItem("token", response.attributes.token);
+
+    localStorage.setItem("token", response.data.attributes.token);
     window.location.href = "/dashboard";
   }
 
