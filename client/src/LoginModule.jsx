@@ -16,7 +16,7 @@ export function LoginModule() {
     e.preventDefault();
     const response = await login([loginInfo.email, loginInfo.password]);
     localStorage.setItem("token", response.attributes.token);
-    window.location.href = "/dashboard";
+    window.location.href = "/home";
   }
 
   const [signupInfo, setSignupInfo] = useState({

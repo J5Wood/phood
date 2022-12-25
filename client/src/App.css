@@ -2,9 +2,7 @@
   width: 100vw;
   min-height: 100vh;
   display: grid;
-  grid-template-rows: 100px 1fr min-content;
-  grid-template-columns: 1fr;
-  /* grid-template: 100px 1fr min-content / 1fr; */
+  grid-template: 100px min-content / 1fr;
 }
 
 .header {
@@ -77,8 +75,10 @@
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  padding-top: 20%;
   gap: 20%;
+  height: calc(100vh - 100px);
 }
 
 .home-page-button {
@@ -106,18 +106,29 @@
   border: 2px solid rgb(55, 55, 55);
 }
 
+.selection-block {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
 .photo-method-selection {
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
   gap: 25%;
+  width: min(80%, 500px);
   white-space: nowrap;
   text-align: center;
   padding: 75px;
   border: 3px solid black;
   border-radius: 15px;
-  display: none;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .icon {
@@ -129,6 +140,7 @@
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .camera-outer-ring {
@@ -144,7 +156,7 @@
 .camera-inner-ring {
   width: 60px;
   height: 60px;
-  background-color: rgb(255, 255, 255);
+  background-color: rgba(220, 230, 255, 0.91);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -172,6 +184,7 @@
   width: 30px;
   border: 3px solid black;
   border-radius: 4px 10px 3px 0;
+  background-color: rgba(255, 197, 32, 0.86);
 }
 
 .file-main-body {
@@ -179,4 +192,5 @@
   width: 65px;
   border: 3px solid black;
   border-radius: 0 3px 0 0;
+  background-color: rgba(255, 197, 32, 0.86);
 }
