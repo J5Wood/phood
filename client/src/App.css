@@ -129,6 +129,19 @@
   border: 3px solid black;
   border-radius: 15px;
   background-color: rgba(255, 255, 255, 0.8);
+  position: relative;
+}
+
+.selection-close-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  height: 40px;
+  width: 40px;
+  background-color: red;
+  border-radius: 50%;
+  border: 2px solid black;
+  cursor: pointer;
 }
 
 .icon {

@@ -4,15 +4,29 @@ export function Home() {
   function addPhoto(e) {
     e.preventDefault();
     const uploadSelector = document.querySelector(".selection-block");
-
+    document.body.addEventListener("onclick", (e) => {
+      closeSelectionBlock(e);
+    });
     uploadSelector.style.display = "inline-flex";
     // debugger;
+  }
+
+  function closeSelectionBlock(e) {
+    e.preventDefault();
+    const uploadSelector = document.querySelector(".selection-block");
+    uploadSelector.style.display = "none";
   }
 
   return (
     <>
       <div className="selection-block">
         <div className="photo-method-selection">
+          <button
+            className="selection-close-button"
+            onClick={(e) => closeSelectionBlock(e)}
+          >
+            X
+          </button>
           <span>
             <h4>Take Photo</h4>
             <div className="icon">
