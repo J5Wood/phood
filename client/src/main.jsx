@@ -5,7 +5,7 @@ import App from "./App";
 import "./index.css";
 import { LoginModule } from "./LoginModule";
 import { Browse } from "./Browse";
-import { Dashboard } from "./Dashboard";
+import { Home } from "./Home";
 import { AddPhoto } from "./AddPhoto";
 import { Post } from "./Post";
 
@@ -19,9 +19,9 @@ const router = createBrowserRouter([
         element: <LoginModule />,
       },
       {
-        path: "dashboard",
+        path: "home",
 
-        element: <Dashboard />,
+        element: <Home />,
       },
       {
         path: "add-photo",
