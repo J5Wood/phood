@@ -1,21 +1,29 @@
 import React from "react";
+import { mobileCheck } from "./helpers/MobileCheck";
 
 export function Home() {
-  function addPhoto(e) {
-    e.preventDefault();
+  function addPhoto() {
     const uploadSelector = document.querySelector(".selection-block");
     uploadSelector.style.display = "flex";
   }
 
-  function closeSelectionBlock(e) {
-    e.preventDefault();
+  function closeSelectionBlock() {
     const uploadSelector = document.querySelector(".selection-block");
     uploadSelector.style.display = "none";
   }
 
+  function accessCamera() {
+    console.log(mobileCheck);
+    if (mobileCheck) {
+      console.log("Accessing Mobile Camera...");
+    } else {
+      console.log("Accessing desktop camera");
+    }
+  }
+
   return (
     <>
-      <div className="selection-block" onClick={(e) => closeSelectionBlock(e)}>
+      <div className="selection-block" onClick={closeSelectionBlock}>
         <div
           className="photo-method-selection"
           onClick={(e) => e.stopPropagation()}
@@ -26,7 +34,7 @@ export function Home() {
           >
             X
           </button>
-          <span>
+          <span onClick={(e) => accessCamera(e)}>
             <h4>Take Photo</h4>
             <div className="icon">
               <div className="camera-outer-ring">
@@ -48,7 +56,7 @@ export function Home() {
         </div>
       </div>
       <div className="home-page">
-        <button className="home-page-button" onClick={(e) => addPhoto(e)}>
+        <button className="home-page-button" onClick={addPhoto}>
           ADD A PHOTO
         </button>
 
