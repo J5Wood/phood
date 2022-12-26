@@ -4,11 +4,7 @@ export function Home() {
   function addPhoto(e) {
     e.preventDefault();
     const uploadSelector = document.querySelector(".selection-block");
-    document.body.addEventListener("onclick", (e) => {
-      closeSelectionBlock(e);
-    });
-    uploadSelector.style.display = "inline-flex";
-    // debugger;
+    uploadSelector.style.display = "flex";
   }
 
   function closeSelectionBlock(e) {
@@ -19,8 +15,11 @@ export function Home() {
 
   return (
     <>
-      <div className="selection-block">
-        <div className="photo-method-selection">
+      <div className="selection-block" onClick={(e) => closeSelectionBlock(e)}>
+        <div
+          className="photo-method-selection"
+          onClick={(e) => e.stopPropagation()}
+        >
           <button
             className="selection-close-button"
             onClick={(e) => closeSelectionBlock(e)}
