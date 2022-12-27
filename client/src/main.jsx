@@ -8,6 +8,7 @@ import { Browse } from "./Browse";
 import { Home } from "./Home";
 import { AddPhoto } from "./AddPhoto";
 import { Post } from "./Post";
+import { CapturePhoto } from "./CapturePhoto";
 
 const router = createBrowserRouter([
   {
@@ -20,8 +21,11 @@ const router = createBrowserRouter([
       },
       {
         path: "home",
-
         element: <Home />,
+      },
+      {
+        path: "capture-photo",
+        element: <CapturePhoto />,
       },
       {
         path: "add-photo",

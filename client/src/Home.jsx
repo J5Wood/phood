@@ -1,5 +1,4 @@
 import React from "react";
-import { mobileCheck } from "./helpers/MobileCheck";
 
 export function Home() {
   function addPhoto() {
@@ -10,15 +9,6 @@ export function Home() {
   function closeSelectionBlock() {
     const uploadSelector = document.querySelector(".selection-block");
     uploadSelector.style.display = "none";
-  }
-
-  function accessCamera() {
-    console.log(mobileCheck);
-    if (mobileCheck) {
-      console.log("Accessing Mobile Camera...");
-    } else {
-      console.log("Accessing desktop camera");
-    }
   }
 
   return (
@@ -34,7 +24,7 @@ export function Home() {
           >
             X
           </button>
-          <span onClick={(e) => accessCamera(e)}>
+          <span onClick={() => (window.location.href = "capture-photo")}>
             <h4>Take Photo</h4>
             <div className="icon">
               <div className="camera-outer-ring">
