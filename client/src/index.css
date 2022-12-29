@@ -21,10 +21,10 @@
 
 body {
   margin: 0;
-  display: flex;
   place-items: center;
   width: 100vw;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 /* 
 @media (prefers-color-scheme: light) {

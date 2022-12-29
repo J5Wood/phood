@@ -15,14 +15,11 @@ export function CapturePhoto() {
     //   console.log("Mobile Camera");
     //   return;
     // }
-
     const player = document.getElementById("player");
-    const canvas = document.getElementById("canvas");
-    const context = canvas.getContext("2d");
     const captureButton = document.getElementById("capture");
 
-    captureButton.addEventListener("click", () => {
-      context.drawImage(player, 0, 0, canvas.width, canvas.height);
+    captureButton.addEventListener("click", (e) => {
+      imageInspection(e);
     });
 
     navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
@@ -30,11 +27,21 @@ export function CapturePhoto() {
     });
   }
 
+  function imageInspection() {
+    const canvas = document.getElementById("canvas");
+    const context = canvas.getContext("2d");
+    context.drawImage(player, 0, 0, canvas.width, canvas.height);
+
+    // debugger;
+  }
+
   return (
-    <div>
+    <div className="capture-page">
       <video id="player" controls autoPlay></video>
       <button id="capture">Capture</button>
-      <canvas id="canvas" width="320" height="240"></canvas>
+      <div className="canvas-container">
+        <canvas id="canvas"></canvas>
+      </div>
     </div>
   );
 }
