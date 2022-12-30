@@ -31,15 +31,32 @@ export function CapturePhoto() {
     const canvas = document.getElementById("canvas");
     const context = canvas.getContext("2d");
     context.drawImage(player, 0, 0, canvas.width, canvas.height);
-
+    const canvasContainer = canvas.parentElement;
+    canvasContainer.style.display = "flex";
     // debugger;
   }
+
+  function saveImage(e) {}
+
+  function closeInspectionBlock() {}
 
   return (
     <div className="capture-page">
       <video id="player" controls autoPlay></video>
       <button id="capture">Capture</button>
       <div className="canvas-container">
+        <button
+          className="inspection-accept-button"
+          onClick={(e) => saveImage(e)}
+        >
+          ✓
+        </button>
+        <button
+          className="inspection-close-button"
+          onClick={(e) => closeInspectionBlock(e)}
+        >
+          X
+        </button>
         <canvas id="canvas"></canvas>
       </div>
     </div>
