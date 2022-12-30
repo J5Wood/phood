@@ -32,13 +32,21 @@ export function CapturePhoto() {
     const context = canvas.getContext("2d");
     context.drawImage(player, 0, 0, canvas.width, canvas.height);
     const canvasContainer = canvas.parentElement;
+    canvasContainer.addEventListener("click", (e) => closeInspectionBlock(e));
     canvasContainer.style.display = "flex";
+  }
+
+  function saveImage(e) {
+    const canvas = document.getElementById("canvas");
+    const img = canvas.toDataURL();
+    console.log(img);
     // debugger;
   }
 
-  function saveImage(e) {}
-
-  function closeInspectionBlock() {}
+  function closeInspectionBlock(e) {
+    const container = document.querySelector(".canvas-container");
+    container.style.display = "none";
+  }
 
   return (
     <div className="capture-page">
