@@ -1,17 +1,11 @@
-import React from "react";
-
 export async function saveImage(img) {
-  console.log(img);
-  debugger;
+  const fd = new FormData();
+  fd.append("image", img);
   let configObj = {
     method: "POST",
-    headers: {
-      "Content-Type": "application/octet-stream",
-      Accept: "application/octet-stream",
-    },
-    body: img,
+    body: fd,
   };
-  const resp = await fetch("http://localhost:3001/", configObj);
+  const resp = await fetch("http://localhost:3001/posts", configObj);
   const data = await resp.json();
   debugger;
 }
