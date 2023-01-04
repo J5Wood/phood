@@ -231,6 +231,8 @@
   width: 100vw;
   background-color: rgba(0, 0, 0, 0.7);
   display: none;
+  flex-direction: column;
+  gap: 35px;
 }
 
 #canvas {
@@ -252,9 +254,9 @@
 }
 
 .inspection-close-button {
-  position: absolute;
+  /* position: absolute;
   top: calc(50% + 200px);
-  right: calc(50% - 50px);
+  right: calc(50% - 50px); */
   height: 50px;
   width: 50px;
   background-color: red;
@@ -266,9 +268,9 @@
 }
 
 .inspection-accept-button {
-  position: absolute;
+  /* position: absolute;
   top: calc(50% + 200px);
-  right: calc(50% + 50px);
+  right: calc(50% + 50px); */
   height: 50px;
   width: 50px;
   background-color: green;
@@ -277,4 +279,19 @@
   cursor: pointer;
   font-weight: bold;
   font-size: x-large;
+}
+
+.dish-input-container {
+  display: flex;
+  flex-flow: row nowrap;
+  background-color: aqua;
+  border: 1px solid black;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.canvas-button-container {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 75px;
 }

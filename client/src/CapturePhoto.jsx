@@ -43,7 +43,6 @@ export function CapturePhoto() {
 
     // Show container
     const canvasContainer = canvas.parentElement;
-    canvasContainer.addEventListener("click", (e) => closeInspectionBlock(e));
     canvasContainer.style.display = "flex";
   }
 
@@ -69,20 +68,32 @@ export function CapturePhoto() {
     <div className="capture-page">
       <video id="player" autoPlay></video>
       <button id="capture">Capture</button>
-      <div className="canvas-container">
-        <button
-          className="inspection-accept-button"
-          onClick={(e) => grabImage(e)}
-        >
-          ✓
-        </button>
-        <button
-          className="inspection-close-button"
-          onClick={(e) => closeInspectionBlock(e)}
-        >
-          X
-        </button>
+      <div
+        className="canvas-container"
+        onClick={(e) => closeInspectionBlock(e)}
+      >
         <canvas id="canvas"></canvas>
+        <div
+          className="dish-input-container"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <label htmlFor="dish-input">Dish Name:</label>
+          <input type="text" name="dish-input" id="dish-input"></input>
+        </div>
+        <div className="canvas-button-container">
+          <button
+            className="inspection-accept-button"
+            onClick={(e) => grabImage(e)}
+          >
+            ✓
+          </button>
+          <button
+            className="inspection-close-button"
+            onClick={(e) => closeInspectionBlock(e)}
+          >
+            X
+          </button>
+        </div>
       </div>
     </div>
   );
