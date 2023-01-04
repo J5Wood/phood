@@ -1,10 +1,11 @@
 import React from "react";
-import { saveImage } from "./actions/PostActions";
+// import { saveImage } from "./actions/PostActions";
 // import { mobileCheck } from "./helpers/MobileCheck";
 
 export function CapturePhoto() {
   // const [image, setImage] = React.useState(null);
 
+  const [dishName, setDishName] = React.useState("");
   const constraints = {
     video: true,
   };
@@ -49,7 +50,7 @@ export function CapturePhoto() {
   function grabImage(e) {
     const canvas = document.getElementById("canvas");
     canvas.toBlob((blob) => {
-      saveImage(blob);
+      // saveImage(blob);
       // const img = new Image();
       // Object URLs only released on document unload, release or they could eat up memory.
       // img.src = window.URL.createObjectURL(blob);
@@ -62,6 +63,11 @@ export function CapturePhoto() {
   function closeInspectionBlock(e) {
     const container = document.querySelector(".canvas-container");
     container.style.display = "none";
+    setDishName("");
+  }
+
+  function handleInputChange(e) {
+    setDishName(e.target.value);
   }
 
   return (
@@ -78,7 +84,13 @@ export function CapturePhoto() {
           onClick={(e) => e.stopPropagation()}
         >
           <label htmlFor="dish-input">Dish Name:</label>
-          <input type="text" name="dish-input" id="dish-input"></input>
+          <input
+            type="text"
+            name="dish-input"
+            id="dish-input"
+            value={dishName}
+            onChange={(e) => handleInputChange(e)}
+          ></input>
         </div>
         <div className="canvas-button-container">
           <button

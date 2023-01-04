@@ -9,7 +9,7 @@ import { Home } from "./Home";
 import { AddPhoto } from "./AddPhoto";
 import { Post } from "./Post";
 import { CapturePhoto } from "./CapturePhoto";
-
+import { RestaurantLocation } from "./RestaurantLocation";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -26,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: "capture-photo",
         element: <CapturePhoto />,
+      },
+      {
+        path: "restaurant-location",
+        element: <RestaurantLocation />,
       },
       {
         path: "add-photo",
