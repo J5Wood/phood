@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 // import { mobileCheck } from "./helpers/MobileCheck";
 
-export function CapturePhoto({ grabCanvasImage }) {
-  const [dishName, setDishName] = useState("");
+export function CapturePhoto({ dishName, setDishName, grabCanvasImage }) {
   function handleInputChange(e) {
     setDishName(e.target.value);
   }
