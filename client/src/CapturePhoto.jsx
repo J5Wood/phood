@@ -1,16 +1,17 @@
-import React from "react";
-// import { saveImage } from "./actions/PostActions";
+import React, { useState, useEffect } from "react";
 // import { mobileCheck } from "./helpers/MobileCheck";
 
-export function CapturePhoto() {
-  // const [image, setImage] = React.useState(null);
+export function CapturePhoto({ grabCanvasImage }) {
+  const [dishName, setDishName] = useState("");
+  function handleInputChange(e) {
+    setDishName(e.target.value);
+  }
 
-  const [dishName, setDishName] = React.useState("");
   const constraints = {
     video: true,
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     readyCamera();
   }, []);
 
@@ -47,27 +48,10 @@ export function CapturePhoto() {
     canvasContainer.style.display = "flex";
   }
 
-  function grabImage(e) {
-    const canvas = document.getElementById("canvas");
-    canvas.toBlob((blob) => {
-      // saveImage(blob);
-      // const img = new Image();
-      // Object URLs only released on document unload, release or they could eat up memory.
-      // img.src = window.URL.createObjectURL(blob);
-      // debugger;
-    });
-    // const img = new Image();
-    // img.src = window.URL.createObjectUrl(blob);
-  }
-
   function closeInspectionBlock(e) {
     const container = document.querySelector(".canvas-container");
     container.style.display = "none";
     setDishName("");
-  }
-
-  function handleInputChange(e) {
-    setDishName(e.target.value);
   }
 
   return (
@@ -95,7 +79,7 @@ export function CapturePhoto() {
         <div className="canvas-button-container">
           <button
             className="inspection-accept-button"
-            onClick={(e) => grabImage(e)}
+            onClick={(e) => grabCanvasImage(e)}
           >
             ✓
           </button>
