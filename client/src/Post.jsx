@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { CapturePhoto } from "./CapturePhoto";
-import { Map } from "./Map";
+import { MapWrapper } from "./MapWrapper";
 
 export function Post() {
   const [postImage, setPostImage] = useState(null);
@@ -20,7 +20,7 @@ export function Post() {
   }
 
   function renderInterface() {
-    if (postImage) return <Map image={postImage} dishName={dishName} />;
+    if (postImage) return <MapWrapper image={postImage} dishName={dishName} />;
     return (
       <CapturePhoto
         dishName={dishName}
