@@ -1,26 +1,26 @@
-import React, { useRef, useState } from "react";
-import { Wrapper } from "@googlemaps/react-wrapper";
-
-function Map({ image, dishName }) {
-  const ref = useRef(null);
-  const [map, setMap] = useState();
-
-  React.useEffect(() => {
-    if (ref.current && !map) {
-      setMap(new window.google.maps.Map(ref.current, {}));
-    }
-  }, [ref, map]);
-  // debugger;
-
-  // get image, dish name, amd location info. Send to backend with user token.
-
-  return <div ref={ref} />;
-}
+import React from "react";
+import { MapContainer, TileLayer, useMap } from "react-leaflet";
+import { Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+// get image, dish name, amd location info. Send to backend with user token.
 
 export function MapWrapper() {
   return (
-    <Wrapper apiKey={"YOUR_API_KEY"}>
-      <Map />
-    </Wrapper>
+    <MapContainer
+      className="map"
+      center={[51.505, -0.09]}
+      zoom={13}
+      scrollWheelZoom={false}
+    >
+      <TileLayer
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+      <Marker position={[51.505, -0.09]}>
+        <Popup>
+          A pretty CSS3 popup. <br /> Easily customizable.
+        </Popup>
+      </Marker>
+    </MapContainer>
   );
 }

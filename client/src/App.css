@@ -295,3 +295,8 @@
   flex-flow: row nowrap;
   gap: 75px;
 }
+
+.map {
+  width: 80%;
+  height: 500px;
+}
