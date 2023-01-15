@@ -1,28 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { SearchField } from "./SearchField";
 import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-// import { LocationMarker } from "./LocationMarker";
-// import { OpenStreetMapProvider } from "leaflet-geosearch";
+import "../node_modules/leaflet-geosearch/dist/geosearch.css";
 
 // get image, dish name, amd location info. Send to backend with user token.
 
 export function MapWrapper() {
-  // const provider = new OpenStreetMapProvider();
-
-  // const [searchInput, setSearchInput] = useState("");
-
-  // function handleInputChange(e) {
-  //   setSearchInput(e.target.value);
-  //   mapSearch(e.target.value);
-  // }
-
-  // async function mapSearch(location) {
-  //   const results = await provider.search({ query: location });
-  //   console.log(results);
-  //   // debugger;
-  // }
-
   return (
     <>
       <MapContainer
@@ -37,13 +21,6 @@ export function MapWrapper() {
         />
         <SearchField />
       </MapContainer>
-      {/* <input
-        type="text"
-        name="searchInput"
-        id="searchInput"
-        value={searchInput}
-        onChange={(e) => handleInputChange(e)}
-      /> */}
     </>
   );
 }
