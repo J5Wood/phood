@@ -3,10 +3,17 @@ import { SearchField } from "./SearchField";
 import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "../node_modules/leaflet-geosearch/dist/geosearch.css";
-
 // get image, dish name, amd location info. Send to backend with user token.
 
-export function MapWrapper() {
+export function MapWrapper({ image, dishName, resetImage }) {
+  function acceptPostLocation() {
+    debugger;
+  }
+
+  function navigateBack(resetImage) {
+    resetImage(null);
+  }
+
   return (
     <>
       <MapContainer
@@ -21,6 +28,8 @@ export function MapWrapper() {
         />
         <SearchField />
       </MapContainer>
+      <button onClick={() => acceptPostLocation()}>ACCEPT</button>
+      <button onClick={() => navigateBack(resetImage)}>GO BACK</button>
     </>
   );
 }

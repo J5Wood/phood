@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 // import { mobileCheck } from "./helpers/MobileCheck";
 
+// * Add an unready camera function to clean up useEffect and hopefully turn off camera
+
 export function CapturePhoto({ dishName, setDishName, grabCanvasImage }) {
   function handleInputChange(e) {
     setDishName(e.target.value);

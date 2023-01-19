@@ -20,7 +20,14 @@ export function Post() {
   }
 
   function renderInterface() {
-    if (postImage) return <MapWrapper image={postImage} dishName={dishName} />;
+    if (postImage)
+      return (
+        <MapWrapper
+          image={postImage}
+          dishName={dishName}
+          resetImage={setPostImage}
+        />
+      );
     return (
       <CapturePhoto
         dishName={dishName}
