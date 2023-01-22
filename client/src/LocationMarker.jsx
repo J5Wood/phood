@@ -8,7 +8,6 @@ export function LocationMarker() {
       map.locate();
     },
     locationfound(e) {
-      debugger;
       setPosition(e.latlng);
       map.flyTo(e.latlng, map.getZoom());
     },

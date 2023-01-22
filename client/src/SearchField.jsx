@@ -1,20 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { GeoSearchControl, OpenStreetMapProvider } from "leaflet-geosearch";
 import { useMap } from "react-leaflet";
-import { useMapEvents } from "react-leaflet/hooks";
-import { Handler } from "leaflet";
 
-// const form = document.querySelector('form');
-// const input = form.querySelector('input[type="text"]');
-
-// form.addEventListener('submit', async (event) => {
-//   event.preventDefault();
-
-//   const results = await provider.search({ query: input.value });
-//   console.log(results); // » [{}, {}, {}, ...]
-// });
-
-export function SearchField() {
+export function SearchField({ setLocation }) {
   const searchControl = new GeoSearchControl({
     provider: new OpenStreetMapProvider(),
     style: "bar",
@@ -24,10 +12,9 @@ export function SearchField() {
   });
 
   const map = useMap();
-  const [searchInput, setSearchInput] = useState("");
 
   function handleInputChange(e) {
-    setSearchInput(e.target.value);
+    setLocation(e.target.value);
   }
 
   useEffect(() => {

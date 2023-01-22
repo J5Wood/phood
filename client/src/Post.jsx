@@ -37,10 +37,5 @@ export function Post() {
     );
   }
 
-  return (
-    <div>
-      Post
-      {renderInterface()}
-    </div>
-  );
+  return <div>{renderInterface()}</div>;
 }
