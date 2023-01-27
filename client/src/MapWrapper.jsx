@@ -8,8 +8,9 @@ import "../node_modules/leaflet-geosearch/dist/geosearch.css";
 export function MapWrapper({ image, dishName, resetImage }) {
   const [location, setLocation] = useState("");
 
-  function acceptPostLocation(location) {
-    debugger;
+  function acceptPostLocation() {
+    const locationString = document.querySelector(".leaflet-popup-content");
+    setLocation(locationString.innerText);
   }
 
   function navigateBack(resetImage) {
@@ -29,9 +30,9 @@ export function MapWrapper({ image, dishName, resetImage }) {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <SearchField setLocation={setLocation} />
+        <SearchField />
       </MapContainer>
-      <button onClick={() => acceptPostLocation(location)}>ACCEPT</button>
+      <button onClick={() => acceptPostLocation()}>ACCEPT</button>
     </>
   );
 }
