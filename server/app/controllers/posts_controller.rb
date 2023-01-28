@@ -8,8 +8,8 @@ class PostsController < ApplicationController
     def create
         # Find user and attach to post
         # Will need dish name as well
-        post = Post.new(post_params)
         byebug
+        post = Post.new(post_params)
         render json: PostSerializer.new(post)
     end
 

@@ -1,16 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import { SearchField } from "./SearchField";
 import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "../node_modules/leaflet-geosearch/dist/geosearch.css";
+import { savePost } from "./actions/PostActions";
 // get image, dish name, amd location info. Send to backend with user token.
 
 export function MapWrapper({ image, dishName, resetImage }) {
-  const [location, setLocation] = useState("");
-
-  function acceptPostLocation() {
-    const locationString = document.querySelector(".leaflet-popup-content");
-    setLocation(locationString.innerText);
+  function acceptPostLocation(image, dishName) {
+    const location = document.querySelector(".leaflet-popup-content").innerText;
+    savePost(image, dishName, location);
   }
 
   function navigateBack(resetImage) {
@@ -32,7 +31,9 @@ export function MapWrapper({ image, dishName, resetImage }) {
         />
         <SearchField />
       </MapContainer>
-      <button onClick={() => acceptPostLocation()}>ACCEPT</button>
+      <button onClick={() => acceptPostLocation(image, dishName)}>
+        ACCEPT
+      </button>
     </>
   );
 }

@@ -1,6 +1,8 @@
-export async function saveImage(img) {
+export async function savePost(img, dish, location) {
   const fd = new FormData();
   fd.append("image", img);
+  fd.append("dish", dish);
+  fd.append("location", location);
   let configObj = {
     method: "POST",
     body: fd,
