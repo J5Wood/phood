@@ -6,10 +6,13 @@ import "../node_modules/leaflet-geosearch/dist/geosearch.css";
 import { savePost } from "./actions/PostActions";
 // get image, dish name, amd location info. Send to backend with user token.
 
+// *** Change const user to user's token, send token to backend to assign to a user
+
 export function MapWrapper({ image, dishName, resetImage }) {
   function acceptPostLocation(image, dishName) {
     const location = document.querySelector(".leaflet-popup-content").innerText;
-    savePost(image, dishName, location);
+    const userId = 1;
+    savePost(image, dishName, location, userId);
   }
 
   function navigateBack(resetImage) {

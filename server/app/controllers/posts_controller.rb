@@ -6,16 +6,19 @@ class PostsController < ApplicationController
     end
 
     def create
-        # Find user and attach to post
-        # Will need dish name as well
-        byebug
-        post = Post.new(post_params)
-        render json: PostSerializer.new(post)
+        # Will need to change user lookup to grab by token id
+        # Need to make dish searchable or predetermined on front end
+        user = User.find_by(id: params[:uid])
+        dish = Dish.new(name: params[:dish])
+        restaurant = Restaurant.new(name: params[:location])
+        dish.restaurant = restaurant
+        post = user.posts.new()
+        post.dish = dish
+        post.image.attach(params[:image])
+        if post.save
+            render json: PostSerializer.new(post)
+        end
     end
 
     private
-
-    def post_params
-        params.permit(:image)
-    end
 end

@@ -1,8 +1,9 @@
-export async function savePost(img, dish, location) {
+export async function savePost(img, dish, location, userId) {
   const fd = new FormData();
   fd.append("image", img);
   fd.append("dish", dish);
   fd.append("location", location);
+  fd.append("uid", userId);
   let configObj = {
     method: "POST",
     body: fd,
