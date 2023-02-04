@@ -10,5 +10,5 @@ export async function savePost(img, dish, location, userId) {
   };
   const resp = await fetch("http://localhost:3001/posts", configObj);
   const data = await resp.json();
-  debugger;
+  return data;
 }

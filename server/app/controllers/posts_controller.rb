@@ -20,5 +20,12 @@ class PostsController < ApplicationController
         end
     end
 
+    def show
+        post = Post.find_by(id: params[:id])
+        if(post)
+            render json: PostSerializer.new(post)
+        end
+    end
+
     private
 end

@@ -9,10 +9,15 @@ import { savePost } from "./actions/PostActions";
 // *** Change const user to user's token, send token to backend to assign to a user
 
 export function MapWrapper({ image, dishName, resetImage }) {
-  function acceptPostLocation(image, dishName) {
+  async function acceptPostLocation(image, dishName) {
     const location = document.querySelector(".leaflet-popup-content").innerText;
     const userId = 1;
-    savePost(image, dishName, location, userId);
+    const resp = await savePost(image, dishName, location, userId);
+    if (resp.data) {
+      window.location.href = `/post/${resp.data.id}`;
+    } else {
+      // *** Handle errors
+    }
   }
 
   function navigateBack(resetImage) {

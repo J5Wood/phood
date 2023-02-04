@@ -24,7 +24,7 @@ export function Home() {
           >
             X
           </button>
-          <span onClick={() => (window.location.href = "post")}>
+          <span onClick={() => (window.location.href = "post-form")}>
             <h4>Take Photo</h4>
             <div className="icon">
               <div className="camera-outer-ring">
