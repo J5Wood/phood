@@ -14,8 +14,10 @@ export function MapWrapper({ image, dishName, resetImage }) {
     const userId = 1;
     const resp = await savePost(image, dishName, location, userId);
     if (resp.data) {
+      debugger;
       window.location.href = `/post/${resp.data.id}`;
     } else {
+      debugger;
       // *** Handle errors
     }
   }

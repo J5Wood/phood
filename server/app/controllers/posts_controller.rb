@@ -8,15 +8,16 @@ class PostsController < ApplicationController
     def create
         # Will need to change user lookup to grab by token id
         # Need to make dish searchable or predetermined on front end
+        # byebug
         user = User.find_by(id: params[:uid])
         dish = Dish.new(name: params[:dish])
-        restaurant = Restaurant.new(name: params[:location])
+        restaurant = Restaurant.new(name: params[:location].split(",")[0], address: params[:location].split(",").slice(1..).join.strip)
         dish.restaurant = restaurant
         post = user.posts.new()
         post.dish = dish
         post.image.attach(params[:image])
         if post.save
-            render json: PostSerializer.new(post)
+            render json: {"post_id": post.id}
         end
     end
 
