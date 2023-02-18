@@ -300,3 +300,10 @@
   width: 80%;
   height: 500px;
 }
+
+/*** Post */
+
+.post-image {
+  width: 600px;
+  height: 450px;
+}
