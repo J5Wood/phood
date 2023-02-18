@@ -13,11 +13,11 @@ export function MapWrapper({ image, dishName, resetImage }) {
     const location = document.querySelector(".leaflet-popup-content").innerText;
     const userId = 1;
     const resp = await savePost(image, dishName, location, userId);
-    if (resp.data) {
+    if (resp.postId) {
       debugger;
-      window.location.href = `/post/${resp.data.id}`;
+      window.location.href = `/post/${resp.postId}`;
     } else {
-      debugger;
+      console.log(resp);
       // *** Handle errors
     }
   }

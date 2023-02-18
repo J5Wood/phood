@@ -17,11 +17,12 @@ class PostsController < ApplicationController
         post.dish = dish
         post.image.attach(params[:image])
         if post.save
-            render json: {"post_id": post.id}
+            render json: {"postId": post.id}
         end
     end
 
     def show
+        byebug
         post = Post.find_by(id: params[:id])
         if(post)
             render json: PostSerializer.new(post)
