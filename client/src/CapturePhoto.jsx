@@ -8,6 +8,12 @@ export function CapturePhoto({ dishName, setDishName, grabCanvasImage }) {
     setDishName(e.target.value);
   }
 
+  function handleInputSubmit(e) {
+    if (e.key === "Enter") {
+      grabCanvasImage(e);
+    }
+  }
+
   const constraints = {
     video: true,
   };
@@ -75,6 +81,7 @@ export function CapturePhoto({ dishName, setDishName, grabCanvasImage }) {
             id="dish-input"
             value={dishName}
             onChange={(e) => handleInputChange(e)}
+            onKeyUp={(e) => handleInputSubmit(e)}
           ></input>
         </div>
         <div className="canvas-button-container">

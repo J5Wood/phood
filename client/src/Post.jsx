@@ -21,10 +21,12 @@ export function Post() {
 
   function renderPost() {
     if (post) {
+      const { get_image_url, dish, restaurant } = post.attributes;
       return (
         <>
-          <h3>I'm a post</h3>
-          <img className="post-image" src={post.attributes.get_image_url} />
+          <img className="post-image" src={get_image_url} />
+          <h2>{dish.name}</h2>
+          <h4>{restaurant.name}</h4>
         </>
       );
     } else {
