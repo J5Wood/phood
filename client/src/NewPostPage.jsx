@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { CapturePhoto } from "./CapturePhoto";
 import { MapWrapper } from "./MapWrapper";
 
-export function PostForm() {
+export function NewPostPage() {
   const [postImage, setPostImage] = useState(null);
   const [dishName, setDishName] = useState("");
 

@@ -7,6 +7,7 @@ import { savePost } from "./actions/PostActions";
 // get image, dish name, amd location info. Send to backend with user token.
 
 // *** Change const user to user's token, send token to backend to assign to a user
+// *** Grab map data and put it into input fields. Allow user to accept or change fields.
 
 export function MapWrapper({ image, dishName, resetImage }) {
   async function acceptPostLocation(image, dishName) {

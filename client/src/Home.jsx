@@ -24,7 +24,7 @@ export function Home() {
           >
             X
           </button>
-          <span onClick={() => (window.location.href = "post-form")}>
+          <span onClick={() => (window.location.href = "new-post?camera")}>
             <h4>Take Photo</h4>
             <div className="icon">
               <div className="camera-outer-ring">
@@ -34,7 +34,7 @@ export function Home() {
               </div>
             </div>
           </span>
-          <span>
+          <span onClick={() => (window.location.href = "new-post?file")}>
             <h4>Add From Files</h4>
             <div className="icon">
               <div className="file-upper-tab-container">

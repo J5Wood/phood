@@ -7,7 +7,7 @@ import { LoginModule } from "./LoginModule";
 import { Browse } from "./Browse";
 import { Home } from "./Home";
 import { AddPhoto } from "./AddPhoto";
-import { PostForm } from "./PostForm";
+import { NewPostPage } from "./NewPostPage";
 import { Post } from "./Post";
 
 const router = createBrowserRouter([
@@ -24,8 +24,8 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "post-form",
-        element: <PostForm />,
+        path: "new-post",
+        element: <NewPostPage />,
       },
       {
         path: "post/:postId",
