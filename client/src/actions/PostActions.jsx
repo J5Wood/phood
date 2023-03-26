@@ -1,7 +1,6 @@
 const postsUrl = "http://localhost:3001/posts";
 
 export async function savePost(img, dish, location, userId) {
-  debugger;
   const fd = new FormData();
   fd.append("image", img);
   fd.append("dish", dish);

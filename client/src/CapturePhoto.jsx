@@ -4,17 +4,13 @@ import React, { useEffect } from "react";
 // * Add an unready camera function to clean up useEffect and hopefully turn off camera
 
 export function CapturePhoto({ dishName, setDishName, attachPostImage }) {
-  function handleInputChange(e) {
-    setDishName(e.target.value);
-  }
-
   function submitKeyFilter(e) {
     if (e.key === "Enter") {
-      handleInputSubmit(e);
+      handleInputSubmit();
     }
   }
 
-  function handleInputSubmit(e) {
+  function handleInputSubmit() {
     const canvas = document.getElementById("canvas");
     canvas.toBlob((blob) => {
       attachPostImage(blob);
@@ -89,14 +85,14 @@ export function CapturePhoto({ dishName, setDishName, attachPostImage }) {
             name="dish-input"
             id="dish-input"
             value={dishName}
-            onChange={(e) => handleInputChange(e)}
+            onChange={(e) => setDishName(e.target.value)}
             onKeyUp={(e) => submitKeyFilter(e)}
           ></input>
         </div>
         <div className="canvas-button-container">
           <button
             className="inspection-accept-button"
-            onClick={(e) => handleInputSubmit(e)}
+            onClick={handleInputSubmit}
           >
             ✓
           </button>
