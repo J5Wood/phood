@@ -26,6 +26,8 @@ export function MapWrapper({ image, dishName, resetImage }) {
     resetImage(null);
   }
 
+  debugger;
+
   return (
     <>
       <button onClick={() => navigateBack(resetImage)}>GO BACK</button>
