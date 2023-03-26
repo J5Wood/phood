@@ -20,7 +20,13 @@ export function NewPostPage() {
     const pictureMethod = window.location.search.split("?")[1];
 
     if (pictureMethod === "file") {
-      return <AttachFile attachPostImage={setPostImage} />;
+      return (
+        <AttachFile
+          dishName={dishName}
+          setDishName={setDishName}
+          attachPostImage={setPostImage}
+        />
+      );
     }
 
     return (

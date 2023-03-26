@@ -1,6 +1,6 @@
 import React from "react";
 
-export function AttachFile({ grabImageFile, attachPostImage }) {
+export function AttachFile({ dishName, setDishName, attachPostImage }) {
   function handleNewFile(e) {
     e.preventDefault();
     const input = document.getElementById("newFileInput");
@@ -14,6 +14,14 @@ export function AttachFile({ grabImageFile, attachPostImage }) {
       <form onSubmit={(e) => handleNewFile(e)}>
         <label htmlFor="newFileInput" />
         <input id="newFileInput" type="file" />
+        <label htmlFor="dish-input">Dish Name:</label>
+        <input
+          type="text"
+          name="dish-input"
+          id="dish-input"
+          value={dishName}
+          onChange={(e) => setDishName(e.target.value)}
+        ></input>
         <input type="submit" />
       </form>
     </div>
