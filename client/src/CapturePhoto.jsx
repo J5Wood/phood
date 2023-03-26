@@ -3,15 +3,22 @@ import React, { useEffect } from "react";
 
 // * Add an unready camera function to clean up useEffect and hopefully turn off camera
 
-export function CapturePhoto({ dishName, setDishName, grabCanvasImage }) {
+export function CapturePhoto({ dishName, setDishName, attachPostImage }) {
   function handleInputChange(e) {
     setDishName(e.target.value);
   }
 
-  function handleInputSubmit(e) {
+  function submitKeyFilter(e) {
     if (e.key === "Enter") {
-      grabCanvasImage(e);
+      handleInputSubmit(e);
     }
+  }
+
+  function handleInputSubmit(e) {
+    const canvas = document.getElementById("canvas");
+    canvas.toBlob((blob) => {
+      attachPostImage(blob);
+    });
   }
 
   const constraints = {
@@ -56,9 +63,11 @@ export function CapturePhoto({ dishName, setDishName, grabCanvasImage }) {
   }
 
   function closeInspectionBlock(e) {
-    const container = document.querySelector(".canvas-container");
-    container.style.display = "none";
-    setDishName("");
+    if (e.target.classList.value !== "inspection-accept-button") {
+      const container = document.querySelector(".canvas-container");
+      container.style.display = "none";
+      setDishName("");
+    }
   }
 
   return (
@@ -81,13 +90,13 @@ export function CapturePhoto({ dishName, setDishName, grabCanvasImage }) {
             id="dish-input"
             value={dishName}
             onChange={(e) => handleInputChange(e)}
-            onKeyUp={(e) => handleInputSubmit(e)}
+            onKeyUp={(e) => submitKeyFilter(e)}
           ></input>
         </div>
         <div className="canvas-button-container">
           <button
             className="inspection-accept-button"
-            onClick={(e) => grabCanvasImage(e)}
+            onClick={(e) => handleInputSubmit(e)}
           >
             ✓
           </button>
