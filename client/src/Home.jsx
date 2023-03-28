@@ -50,7 +50,7 @@ export function Home() {
           ADD A PHOTO
         </button>
 
-        <a href="/browse" className="home-page-button">
+        <a href="/library" className="home-page-button">
           LIBRARY
         </a>
       </div>

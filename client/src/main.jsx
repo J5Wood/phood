@@ -9,6 +9,7 @@ import { Home } from "./Home";
 import { AddPhoto } from "./AddPhoto";
 import { NewPostPage } from "./NewPostPage";
 import { Post } from "./Post";
+import { Library } from "./Library";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,11 @@ const router = createBrowserRouter([
       {
         path: "add-photo",
         element: <AddPhoto />,
+      },
+      {
+        path: "library",
+
+        element: <Library />,
       },
       {
         path: "browse",
