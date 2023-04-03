@@ -1,5 +1,13 @@
 class PostsController < ApplicationController
 
+    def index
+        user = User.find_by(id: user_params)
+        posts = Post.where(user: user)
+        if(posts)
+            render json: PostSerializer.new(posts)
+        end
+    end
+
     def create
         # Will need to change user lookup to grab by token id
         # Need to make dish searchable or predetermined on front end

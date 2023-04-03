@@ -1,5 +1,11 @@
 const postsUrl = "http://localhost:3001/posts";
 
+export async function getPosts(userId) {
+  const resp = await fetch(`${postsUrl}?uid=${userId}`);
+  const data = await resp.json();
+  return data;
+}
+
 export async function savePost(img, dish, location, userId) {
   const fd = new FormData();
   fd.append("image", img);
