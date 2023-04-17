@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { login, signup } from "./actions/UserActions";
+import { login, signup } from "../../actions/UserActions";
 
 export function LoginModule() {
   const [loginInfo, setLoginInfo] = useState({
@@ -42,7 +42,7 @@ export function LoginModule() {
     }
 
     localStorage.setItem("token", response.data.attributes.token);
-    window.location.href = "/dashboard";
+    window.location.href = "/home";
   }
 
   return (

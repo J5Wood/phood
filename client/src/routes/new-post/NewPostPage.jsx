@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { CapturePhoto } from "./CapturePhoto";
-import { MapWrapper } from "./MapWrapper";
-import { AttachFile } from "./AttachFile";
+import { CapturePhoto } from "./components/CapturePhoto";
+import { MapWrapper } from "./components/MapWrapper";
+import { AttachFile } from "./components/AttachFile";
 
 export function NewPostPage() {
   const [postImage, setPostImage] = useState(null);

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getPost } from "./actions/PostActions";
+import { getPost } from "../../actions/PostActions";
 
 export function Post() {
   const [post, setPost] = useState(null);

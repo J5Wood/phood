@@ -2,8 +2,8 @@ import React from "react";
 import { SearchField } from "./SearchField";
 import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import "../node_modules/leaflet-geosearch/dist/geosearch.css";
-import { savePost } from "./actions/PostActions";
+import "../../../../node_modules/leaflet-geosearch/dist/geosearch.css";
+import { savePost } from "../../../actions/PostActions";
 
 // *** Change const user to user's token, send token to backend to assign to a user
 // *** Grab map data and put it into input fields. Allow user to accept or change fields.
@@ -14,7 +14,7 @@ export function MapWrapper({ image, dishName, resetImage }) {
     const userId = 1;
     const resp = await savePost(image, dishName, location, userId);
     if (resp.postId) {
-      window.location.href = `/post/${resp.postId}`;
+      window.location.href = `/posts/${resp.postId}`;
     } else {
       console.log(resp);
       // *** Handle errors

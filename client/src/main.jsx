@@ -3,13 +3,12 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import "./index.css";
-import { LoginModule } from "./LoginModule";
-import { Browse } from "./Browse";
-import { Home } from "./Home";
-import { AddPhoto } from "./AddPhoto";
-import { NewPostPage } from "./NewPostPage";
-import { Post } from "./Post";
-import { Library } from "./Library";
+import { LoginModule } from "./routes/login/LoginModule";
+import { Browse } from "./routes/browse/Browse";
+import { Home } from "./routes/home/Home";
+import { NewPostPage } from "./routes/new-post/NewPostPage";
+import { Post } from "./routes/post/Post";
+import { Library } from "./routes/library/Library";
 
 const router = createBrowserRouter([
   {
@@ -29,12 +28,8 @@ const router = createBrowserRouter([
         element: <NewPostPage />,
       },
       {
-        path: "post/:postId",
+        path: "posts/:postId",
         element: <Post />,
-      },
-      {
-        path: "add-photo",
-        element: <AddPhoto />,
       },
       {
         path: "library",
@@ -45,11 +40,6 @@ const router = createBrowserRouter([
         path: "browse",
 
         element: <Browse />,
-      },
-      {
-        path: "post",
-
-        element: <Post />,
       },
     ],
   },

@@ -1,6 +1,8 @@
 import React from "react";
 import { useQuery } from "react-query";
-import { getPosts } from "./actions/PostActions";
+import { getPosts } from "../../actions/PostActions";
+
+// *** Change to dynamic ID retrieval
 
 export function Library() {
   const { status, data, error } = useQuery(["posts"], () => getPosts(1));
