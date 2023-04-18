@@ -5,15 +5,17 @@ import { getPosts } from "../../actions/PostActions";
 // *** Change to dynamic ID retrieval
 
 export function Library() {
-  const { status, data, error } = useQuery(["posts"], () => getPosts(1));
+  const { status, data, error } = useQuery(["posts"], () => getPosts(2));
 
   if (status === "loading") {
     return <h2>Loading...</h2>;
   }
 
   if (status === "error") {
-    return <h2>ERROR</h2>;
+    return <p>{error}</p>;
   }
+
+  console.log(data.data.length);
 
   return (
     <div>

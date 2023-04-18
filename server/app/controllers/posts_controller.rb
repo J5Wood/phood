@@ -1,8 +1,12 @@
 class PostsController < ApplicationController
 
     def index
-        user = User.find_by(id: user_params)
-        posts = Post.where(user: user)
+        if(user_params == "null")
+            posts = Post.all()
+        else
+            user = User.find_by(id: user_params)
+            posts = Post.where(user: user)
+        end
         if(posts)
             render json: PostSerializer.new(posts)
         end

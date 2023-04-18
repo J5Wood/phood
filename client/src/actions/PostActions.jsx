@@ -1,6 +1,6 @@
 const postsUrl = "http://localhost:3001/posts";
 
-export async function getPosts(userId) {
+export async function getPosts(userId = null) {
   const resp = await fetch(`${postsUrl}?uid=${userId}`);
   const data = await resp.json();
   return data;
