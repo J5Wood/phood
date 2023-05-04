@@ -1,6 +1,7 @@
 import React from "react";
 import { useQuery } from "react-query";
 import { getPosts } from "../../actions/PostActions";
+import "./browse.css";
 
 export function Browse() {
   const { status, data, error } = useQuery(["posts"], () => getPosts());
@@ -13,18 +14,20 @@ export function Browse() {
   }
 
   return (
-    <div>
-      <h2>Browse</h2>
-      {data.data.map((d) => {
-        return (
-          <span key={d.id}>
-            <img
-              className="post-preview"
-              src={d.attributes.get_image_url}
-            ></img>
-          </span>
-        );
-      })}
+    <div className="browse-page">
+      <h2 className="browse-page-heading">Browse</h2>
+      <div className="browse-page-listings">
+        {data.data.map((d) => {
+          return (
+            <div className="post-preview" key={d.id}>
+              <img
+                className="post-image"
+                src={d.attributes.get_image_url}
+              ></img>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
