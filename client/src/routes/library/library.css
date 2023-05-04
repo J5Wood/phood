@@ -1,0 +1,29 @@
+.library-page {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-content: center;
+}
+
+.library-page-heading {
+  text-align: center;
+}
+
+.library-page-listings {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.post-preview {
+  border: 1px solid black;
+  width: 200px;
+  height: 200px;
+}
+
+.post-image {
+  width: 100%;
+  height: 100%;
+  padding: 2px;
+}

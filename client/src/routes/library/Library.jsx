@@ -18,18 +18,20 @@ export function Library() {
   console.log(data.data.length);
 
   return (
-    <div>
-      <h2>Library</h2>
-      {data.data.map((d) => {
-        return (
-          <span key={d.id}>
-            <img
-              className="post-preview"
-              src={d.attributes.get_image_url}
-            ></img>
-          </span>
-        );
-      })}
+    <div className="browse-page">
+      <h2 className="browse-page-heading">Library</h2>
+      <div className="browse-page-listings">
+        {data.data.map((d) => {
+          return (
+            <span className="post-preview" key={d.id}>
+              <img
+                className="post-image"
+                src={d.attributes.get_image_url}
+              ></img>
+            </span>
+          );
+        })}
+      </div>
     </div>
   );
 }

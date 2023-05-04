@@ -19,12 +19,12 @@ export function Browse() {
       <div className="browse-page-listings">
         {data.data.map((d) => {
           return (
-            <div className="post-preview" key={d.id}>
+            <span className="post-preview" key={d.id}>
               <img
                 className="post-image"
                 src={d.attributes.get_image_url}
               ></img>
-            </div>
+            </span>
           );
         })}
       </div>
