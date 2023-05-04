@@ -15,7 +15,7 @@ export function LoginModule() {
   async function handleLoginSubmit(e) {
     e.preventDefault();
     const response = await login([loginInfo.email, loginInfo.password]);
-    localStorage.setItem("token", response.attributes.token);
+    localStorage.setItem("token", response.id);
     window.location.href = "/home";
   }
 
@@ -41,7 +41,7 @@ export function LoginModule() {
       return;
     }
 
-    localStorage.setItem("token", response.data.attributes.token);
+    localStorage.setItem("token", response.id);
     window.location.href = "/home";
   }
 

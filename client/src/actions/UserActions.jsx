@@ -32,6 +32,6 @@ export async function signup(credentials) {
   };
   const resp = await fetch("http://localhost:3001/users", configObj);
   const data = await resp.json();
-  return data;
+  return data.data;
   // ***** Add reaction to bad data.
 }
