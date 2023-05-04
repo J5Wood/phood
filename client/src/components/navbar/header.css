@@ -41,8 +41,8 @@
   border-radius: 3px;
   display: flex;
   flex-flow: column nowrap;
-  padding: 35px 10px 3px 2px;
-  gap: 1px;
+  padding: 12px 10px 3px 2px;
+  gap: 15px;
   margin-top: 35px;
 }
 
@@ -59,4 +59,12 @@
   border-radius: 6px;
   padding: 7px 15px;
   background-color: white;
+  text-decoration: none;
+  color: black;
+}
+
+.logout-button {
+  background-color: white;
+  border: none;
+  font-size: 1em;
 }

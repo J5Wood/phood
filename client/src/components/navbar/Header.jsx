@@ -9,6 +9,10 @@ export function Header() {
     setShowMenu(!showMenu);
   }
 
+  function handleLogout(e) {
+    e.preventDefault();
+  }
+
   function displayMenu() {
     if (!showMenu) {
       return (
@@ -21,10 +25,20 @@ export function Header() {
     } else {
       return (
         <div className="open-menu">
-          <span className="menu-item">Home</span>
-          <span className="menu-item">Library</span>
-          <span className="menu-item">Browse</span>
-          <span className="menu-item">Logout</span>
+          <a className="menu-item" href="/home">
+            <span>Home</span>
+          </a>
+          <a className="menu-item" href="/library">
+            <span>Library</span>
+          </a>
+          <a className="menu-item" href="/browse">
+            <span>Browse</span>
+          </a>
+          <a className="menu-item">
+            <button className="logout-button" onClick={(e) => handleLogout(e)}>
+              Logout
+            </button>
+          </a>
         </div>
       );
     }
