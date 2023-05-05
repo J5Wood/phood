@@ -15,8 +15,6 @@ export function Library() {
     return <p>{error}</p>;
   }
 
-  console.log(data.data.length);
-
   return (
     <div className="browse-page">
       <h2 className="browse-page-heading">Library</h2>
