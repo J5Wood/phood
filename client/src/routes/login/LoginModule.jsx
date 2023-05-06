@@ -1,7 +1,10 @@
-import { useState } from "react";
-import { login, signup } from "../../actions/UserActions";
+import { useState, useContext } from "react";
+// import { login, signup } from "../../actions/UserActions";
+// import { useAuth } from "../../actions/UserActions";
+import { AuthConsumer } from "../../actions/UserActions";
+export function LoginModule({ auth, setAuth }) {
+  const { login, signup } = AuthConsumer();
 
-export function LoginModule() {
   const [loginInfo, setLoginInfo] = useState({
     email: "",
     password: "",
@@ -14,9 +17,9 @@ export function LoginModule() {
 
   async function handleLoginSubmit(e) {
     e.preventDefault();
-    const response = await login([loginInfo.email, loginInfo.password]);
-    localStorage.setItem("token", response.id);
-    window.location.href = "/home";
+    const isAuthorized = await login([loginInfo.email, loginInfo.password]);
+    if (isAuthorized) window.location.href = "/home";
+    console.log("Display Error!!!!");
   }
 
   const [signupInfo, setSignupInfo] = useState({
@@ -34,15 +37,22 @@ export function LoginModule() {
     e.preventDefault();
     if (signupInfo.password !== signupInfo.confirmPassword)
       console.log("Passwords must match!!!");
-    const response = await signup([signupInfo.email, signupInfo.password]);
+    const isAuthorized = await signup([signupInfo.email, signupInfo.password]);
+    if (isAuthorized) window.location.href = "/home";
 
-    if (response.status === "error") {
-      console.log(response.message);
-      return;
-    }
-
-    localStorage.setItem("token", response.id);
-    window.location.href = "/home";
+    // // *** Test
+    // if (response.status === "error") {
+    //   console.log(response.message);
+    //   return;
+    // }
+    // if (response.id) {
+    //   localStorage.setItem("token", response.id);
+    //   setAuth(true);
+    //   debugger;
+    //   window.location.href = "/home";
+    // }
+    // // *** Display error
+    console.log("Display Error!!!!");
   }
 
   return (
