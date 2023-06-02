@@ -1,13 +1,10 @@
 import "./App.css";
 import { Header } from "./components/navbar/Header";
 import { QueryClient, QueryClientProvider } from "react-query";
-// import { useEffect, useState } from "react";
 import {
   createBrowserRouter,
   RouterProvider,
   Navigate,
-  redirect,
-  Outlet,
 } from "react-router-dom";
 import "./index.css";
 import { LoginModule } from "./routes/login/LoginModule";
@@ -17,57 +14,37 @@ import { NewPostPage } from "./routes/new-post/NewPostPage";
 import { Post } from "./routes/post/Post";
 import { Library } from "./routes/library/Library";
 import { AuthConsumer } from "./actions/UserActions";
-// import { isAuthorized } from "./actions/UserActions";
-// import { AuthProvider } from "./actions/UserActions";
+import { useState } from "react";
 
-// *** authed coming back false, need to figure out why login and signup aren't keeping state
-// *** Likely hard routing with location.href, should navigate
+// *** Require auth now working. Need to test edge cases and more routes.
+// *** Can auth with any token! Nede to check validation
+// *** May be hard load of routes in menu, getting quick loading flash
+
 function RequireAuth({ children }) {
-  const { authed } = AuthConsumer();
-  debugger;
+  const [checkingAuth, setCheckingAuth] = useState(true);
+  const { authed, isAuthorized } = AuthConsumer();
 
-  return authed === true ? children : <Navigate to="/login" replace />;
+  if (authed) {
+    return <>{children}</>;
+  }
+  if (checkingAuth) {
+    checkForAuthorization(setCheckingAuth, isAuthorized);
+    return <h2>Loading...</h2>;
+  }
+  return <Navigate to="/login" replace />;
+}
+
+async function checkForAuthorization(setCheckingAuth, isAuthorized) {
+  if (!!localStorage.token) {
+    await isAuthorized();
+  }
+  setCheckingAuth(false);
 }
 
 function App() {
   const queryClient = new QueryClient();
-  // const [authed, setAuthed] = useState(false);
-
-  // const protectedRoutes = {
-  //   home: true,
-  //   library: true,
-  //   home: true,
-  //   home: true,
-  //   home: true,
-  //   home: true,
-  // };
-
-  // function RequireAuth({ authorized, children }) {
-  //   console.log("authing");
-  //   debugger;
-  // const token = localStorage.token;
-  // debugger;
-  // if (!token) return <Navigate to="/login" />;
-  // if (authorized) return children;
-  // return <Navigate to="/login" />;
-  // (async function checkAuth() {
-  //   const isAuthed = await isAuthorized(token);
-  //   is
-  //   console.log("authing with token");
-  //   if (isAuthed) return children;
-  //   return <Navigate to="/login" />;
-  // })();
-  // }
-
-  // useEffect(() => {
-  //   RequireAuth();
-  // }, []);
 
   const router = createBrowserRouter([
-    // {
-    //   path: "/",
-    //   element: <AuthProvider />,
-    //   children: [
     {
       path: "/login",
       element: <LoginModule />,
@@ -80,16 +57,6 @@ function App() {
         </RequireAuth>
       ),
     },
-    // {
-    //   path: "/home",
-    //   element: <RequireAuth authorized={authed} />,
-    //   children: [
-    //     {
-    //       path: "/home",
-    //       element: <Home />,
-    //     },
-    //   ],
-    // },
     {
       path: "/new-post",
       element: <NewPostPage />,
@@ -106,12 +73,6 @@ function App() {
       path: "/browse",
       element: <Browse />,
     },
-    // {
-    //   path: "*",
-    //   element: <Home />,
-    // },
-    //   ],
-    // },
   ]);
 
   return (

@@ -65,7 +65,8 @@ export function useAuth() {
     // ***** Add reaction to bad data.
   }
 
-  async function isAuthorized(token) {
+  async function isAuthorized() {
+    const token = localStorage.getItem("token");
     const configObj = {
       method: "GET",
       headers: {
@@ -76,6 +77,7 @@ export function useAuth() {
     };
     const resp = await fetch("http://localhost:3001/sessions", configObj);
     const data = await resp.json();
+    setAuthed(true);
     return data;
   }
   return {

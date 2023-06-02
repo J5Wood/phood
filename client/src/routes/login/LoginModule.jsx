@@ -1,14 +1,15 @@
-import { useState, useContext } from "react";
-// import { login, signup } from "../../actions/UserActions";
-// import { useAuth } from "../../actions/UserActions";
+import { useState } from "react";
 import { AuthConsumer } from "../../actions/UserActions";
-export function LoginModule({ auth, setAuth }) {
+import { useNavigate } from "react-router-dom";
+export function LoginModule() {
   const { login, signup } = AuthConsumer();
 
   const [loginInfo, setLoginInfo] = useState({
     email: "",
     password: "",
   });
+
+  const navigate = useNavigate();
 
   function handleLoginInputChange(event) {
     const key = event.target.name;
@@ -18,7 +19,9 @@ export function LoginModule({ auth, setAuth }) {
   async function handleLoginSubmit(e) {
     e.preventDefault();
     const isAuthorized = await login([loginInfo.email, loginInfo.password]);
-    if (isAuthorized) window.location.href = "/home";
+    if (isAuthorized) {
+      navigate("/home");
+    }
     console.log("Display Error!!!!");
   }
 
@@ -38,20 +41,9 @@ export function LoginModule({ auth, setAuth }) {
     if (signupInfo.password !== signupInfo.confirmPassword)
       console.log("Passwords must match!!!");
     const isAuthorized = await signup([signupInfo.email, signupInfo.password]);
-    if (isAuthorized) window.location.href = "/home";
-
-    // // *** Test
-    // if (response.status === "error") {
-    //   console.log(response.message);
-    //   return;
-    // }
-    // if (response.id) {
-    //   localStorage.setItem("token", response.id);
-    //   setAuth(true);
-    //   debugger;
-    //   window.location.href = "/home";
-    // }
-    // // *** Display error
+    if (isAuthorized) {
+      navigate("/home");
+    }
     console.log("Display Error!!!!");
   }
 
