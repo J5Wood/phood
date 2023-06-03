@@ -77,8 +77,9 @@ export function useAuth() {
     };
     const resp = await fetch("http://localhost:3001/sessions", configObj);
     const data = await resp.json();
-    setAuthed(true);
-    return data;
+    if (resp.status === 200 && data === true) {
+      setAuthed(data);
+    }
   }
   return {
     authed,

@@ -13,33 +13,10 @@ import { Home } from "./routes/home/Home";
 import { NewPostPage } from "./routes/new-post/NewPostPage";
 import { Post } from "./routes/post/Post";
 import { Library } from "./routes/library/Library";
-import { AuthConsumer } from "./actions/UserActions";
-import { useState } from "react";
+import { RequireAuth } from "./helpers/RequireAuth";
 
 // *** Require auth now working. Need to test edge cases and more routes.
-// *** Can auth with any token! Nede to check validation
-// *** May be hard load of routes in menu, getting quick loading flash
-
-function RequireAuth({ children }) {
-  const [checkingAuth, setCheckingAuth] = useState(true);
-  const { authed, isAuthorized } = AuthConsumer();
-
-  if (authed) {
-    return <>{children}</>;
-  }
-  if (checkingAuth) {
-    checkForAuthorization(setCheckingAuth, isAuthorized);
-    return <h2>Loading...</h2>;
-  }
-  return <Navigate to="/login" replace />;
-}
-
-async function checkForAuthorization(setCheckingAuth, isAuthorized) {
-  if (!!localStorage.token) {
-    await isAuthorized();
-  }
-  setCheckingAuth(false);
-}
+// *** May have hard loading routes from menu, getting quick loading flash
 
 function App() {
   const queryClient = new QueryClient();
@@ -72,6 +49,10 @@ function App() {
     {
       path: "/browse",
       element: <Browse />,
+    },
+    {
+      path: "*",
+      element: <Navigate to="/home" />,
     },
   ]);
 

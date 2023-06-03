@@ -1,7 +1,10 @@
 class SessionsController < ApplicationController
 
     def authenticate
-        token = request.headers['Authorization'].split(' ')[1] 
+        token = request.headers['Authorization'].split(' ')[1]
+        if token.length != 132
+            return render json: {status: "error", message: "Invalid token"}
+        end
         decoded_hash = (JWT.decode(token, secret_key, true, algorithm: 'HS256'))
         if (!decoded_hash.empty?)
             user = User.find_by(user_id: decoded_hash[0]["user_id"])
@@ -10,6 +13,8 @@ class SessionsController < ApplicationController
             else
                 render json: false
             end
+        else
+            render json: {status: "error", message: "Invalid token"}
         end
     end
 
