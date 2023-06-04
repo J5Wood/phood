@@ -1,5 +1,4 @@
 import "./App.css";
-import { Header } from "./components/navbar/Header";
 import { QueryClient, QueryClientProvider } from "react-query";
 import {
   createBrowserRouter,
@@ -7,6 +6,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import "./index.css";
+import { Layout } from "./components/layout/Layout";
 import { LoginModule } from "./routes/login/LoginModule";
 import { Browse } from "./routes/browse/Browse";
 import { Home } from "./routes/home/Home";
@@ -24,31 +24,31 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/login",
-      element: <LoginModule />,
+      element: <Layout children={<LoginModule />} />,
     },
     {
       path: "/home",
       element: (
         <RequireAuth>
-          <Home />
+          <Layout children={<Home />} />
         </RequireAuth>
       ),
     },
     {
       path: "/new-post",
-      element: <NewPostPage />,
+      element: <Layout children={<NewPostPage />} />,
     },
     {
       path: "/posts/:postId",
-      element: <Post />,
+      element: <Layout children={<Post />} />,
     },
     {
       path: "/library",
-      element: <Library />,
+      element: <Layout children={<Library />} />,
     },
     {
       path: "/browse",
-      element: <Browse />,
+      element: <Layout children={<Browse />} />,
     },
     {
       path: "*",
@@ -59,7 +59,6 @@ function App() {
   return (
     <div className="app">
       <QueryClientProvider client={queryClient}>
-        <Header />
         <RouterProvider router={router} />
       </QueryClientProvider>
     </div>

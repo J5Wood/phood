@@ -1,16 +1,20 @@
 import React from "react";
 import "./header.css";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function Header() {
+  const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
 
   function collapseMenu() {
     setShowMenu(!showMenu);
   }
 
-  function handleLogout(e) {
+  function handleLogout(e, navigate1) {
     e.preventDefault();
+    localStorage.removeItem("token");
+    navigate1("/login");
   }
 
   function displayMenu() {
@@ -35,7 +39,10 @@ export function Header() {
             <span>Browse</span>
           </a>
           <a className="menu-item">
-            <button className="logout-button" onClick={(e) => handleLogout(e)}>
+            <button
+              className="logout-button"
+              onClick={(e, navigate) => handleLogout(e, navigate)}
+            >
               Logout
             </button>
           </a>
