@@ -7,14 +7,15 @@ export function Header() {
   const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
 
-  function collapseMenu() {
+  function collapseMenu(e) {
     setShowMenu(!showMenu);
+    e.stopPropagation();
   }
 
-  function handleLogout(e, navigate1) {
+  function handleLogout(e) {
     e.preventDefault();
     localStorage.removeItem("token");
-    navigate1("/login");
+    navigate("/login");
   }
 
   function displayMenu() {
@@ -38,13 +39,8 @@ export function Header() {
           <a className="menu-item" href="/browse">
             <span>Browse</span>
           </a>
-          <a className="menu-item">
-            <button
-              className="logout-button"
-              onClick={(e, navigate) => handleLogout(e, navigate)}
-            >
-              Logout
-            </button>
+          <a className="menu-item logout-link">
+            <span onClick={(e, nav) => handleLogout(e, nav)}>Logout</span>
           </a>
         </div>
       );

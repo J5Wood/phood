@@ -64,8 +64,6 @@
   color: black;
 }
 
-.logout-button {
-  background-color: white;
-  border: none;
-  font-size: 1em;
+.logout-link {
+  cursor: pointer;
 }
