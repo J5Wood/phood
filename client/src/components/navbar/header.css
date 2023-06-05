@@ -62,8 +62,11 @@
   background-color: white;
   text-decoration: none;
   color: black;
+  font-weight: 600;
 }
 
 .logout-link {
   cursor: pointer;
+  color: white;
+  background-color: rgb(255 0 0 / 80%);
 }

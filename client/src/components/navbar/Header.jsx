@@ -1,7 +1,7 @@
 import React from "react";
 import "./header.css";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 
 export function Header() {
   const navigate = useNavigate();
@@ -30,17 +30,17 @@ export function Header() {
     } else {
       return (
         <div className="open-menu">
-          <a className="menu-item" href="/home">
-            <span>Home</span>
-          </a>
-          <a className="menu-item" href="/library">
-            <span>Library</span>
-          </a>
-          <a className="menu-item" href="/browse">
-            <span>Browse</span>
-          </a>
+          <NavLink to="/home" className="menu-item">
+            Home
+          </NavLink>
+          <NavLink to="/library" className="menu-item">
+            Library
+          </NavLink>
+          <NavLink to="/browse" className="menu-item">
+            Browse
+          </NavLink>
           <a className="menu-item logout-link">
-            <span onClick={(e, nav) => handleLogout(e, nav)}>Logout</span>
+            <span onClick={(e) => handleLogout(e)}>Logout</span>
           </a>
         </div>
       );

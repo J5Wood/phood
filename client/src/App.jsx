@@ -15,8 +15,9 @@ import { Post } from "./routes/post/Post";
 import { Library } from "./routes/library/Library";
 import { RequireAuth } from "./helpers/RequireAuth";
 
-// *** Require auth now working. Need to test edge cases and more routes.
-// *** May have hard loading routes from menu, getting quick loading flash
+// *** Seems to be checking auth on every route, the first time it's visited
+// *** This results in load from auth recheck on every route.
+// *** Maybe NavLink is hard request? or different auth contexts on each route?
 
 function App() {
   const queryClient = new QueryClient();
@@ -36,19 +37,36 @@ function App() {
     },
     {
       path: "/new-post",
-      element: <Layout children={<NewPostPage />} />,
+      element: (
+        <RequireAuth>
+          <Layout children={<NewPostPage />} />
+        </RequireAuth>
+      ),
     },
     {
       path: "/posts/:postId",
-      element: <Layout children={<Post />} />,
+      element: (
+        <RequireAuth>
+          <Layout children={<Post />} />
+        </RequireAuth>
+      ),
     },
     {
       path: "/library",
-      element: <Layout children={<Library />} />,
+
+      element: (
+        <RequireAuth>
+          <Layout children={<Library />} />
+        </RequireAuth>
+      ),
     },
     {
       path: "/browse",
-      element: <Layout children={<Browse />} />,
+      element: (
+        <RequireAuth>
+          <Layout children={<Browse />} />
+        </RequireAuth>
+      ),
     },
     {
       path: "*",
