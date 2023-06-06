@@ -2,10 +2,8 @@ import React from "react";
 import { useQuery } from "react-query";
 import { getPosts } from "../../actions/PostActions";
 
-// *** Change to dynamic ID retrieval
-
 export function Library() {
-  const { status, data, error } = useQuery(["posts"], () => getPosts(2));
+  const { status, data, error } = useQuery(["posts"], () => getPosts(true));
 
   if (status === "loading") {
     return <h2>Loading...</h2>;

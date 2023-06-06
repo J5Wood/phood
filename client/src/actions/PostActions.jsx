@@ -1,7 +1,34 @@
 const postsUrl = "http://localhost:3001/posts";
 
-export async function getPosts(userId = null) {
-  const resp = await fetch(`${postsUrl}?uid=${userId}`);
+function getConfig(user) {
+  let config;
+  if (user) {
+    console.log("true", user);
+    const token = localStorage.getItem("token");
+    config = {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    };
+  } else {
+    console.log("false", user);
+    config = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    };
+  }
+  return config;
+}
+
+export async function getPosts(confirmUser = null) {
+  const configObj = getConfig(confirmUser);
+  const resp = await fetch(`${postsUrl}`, configObj);
   const data = await resp.json();
   return data;
 }

@@ -15,10 +15,6 @@ import { Post } from "./routes/post/Post";
 import { Library } from "./routes/library/Library";
 import { RequireAuth } from "./helpers/RequireAuth";
 
-// *** Seems to be checking auth on every route, the first time it's visited
-// *** This results in load from auth recheck on every route.
-// *** Maybe NavLink is hard request? or different auth contexts on each route?
-
 function App() {
   const queryClient = new QueryClient();
 
