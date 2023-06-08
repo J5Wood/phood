@@ -18,6 +18,27 @@ export function Header() {
     navigate("/login");
   }
 
+  function displayMenuButton() {
+    if (window.location.pathname === "/login") {
+      return <></>;
+    } else {
+      return (
+        <div className="menu-button" onClick={(e) => collapseMenu(e)}>
+          {displayMenu()}
+        </div>
+      );
+    }
+  }
+
+  function navigateHome() {
+    if (
+      window.location.pathname !== "/login" ||
+      !!localStorage.getItem("token")
+    ) {
+      navigate("/home");
+    }
+  }
+
   function displayMenu() {
     if (!showMenu) {
       return (
@@ -49,13 +70,10 @@ export function Header() {
 
   return (
     <div className="header">
-      <button id="main-logo" onClick={() => (window.location.href = "/home")}>
+      <button id="main-logo" onClick={navigateHome}>
         <h1>PHOOD</h1>
       </button>
-
-      <div className="menu-button" onClick={(e) => collapseMenu(e)}>
-        {displayMenu()}
-      </div>
+      {displayMenuButton()}
     </div>
   );
 }
