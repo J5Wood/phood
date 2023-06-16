@@ -11,8 +11,7 @@ import { savePost } from "../../../actions/PostActions";
 export function MapWrapper({ image, dishName, resetImage }) {
   async function acceptPostLocation(image, dishName) {
     const location = document.querySelector(".leaflet-popup-content").innerText;
-    const userId = 2;
-    const resp = await savePost(image, dishName, location, userId);
+    const resp = await savePost(image, dishName, location);
     if (resp.postId) {
       window.location.href = `/posts/${resp.postId}`;
     } else {

@@ -33,13 +33,16 @@ export async function getPosts(confirmUser = null) {
   return data;
 }
 
-export async function savePost(img, dish, location, userId) {
+export async function savePost(img, dish, location) {
+  const token = localStorage.getItem("token");
   const fd = new FormData();
   fd.append("image", img);
   fd.append("dish", dish);
   fd.append("location", location);
-  fd.append("uid", userId);
   let configObj = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
     method: "POST",
     body: fd,
   };
