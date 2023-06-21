@@ -1,8 +1,13 @@
 import React from "react";
 import { useQuery } from "react-query";
 import { getPosts } from "../../actions/PostActions";
+import { useNavigate } from "react-router-dom";
 
 export function Library() {
+  const navigate = useNavigate();
+  function navToPage(id) {
+    navigate(`/posts/${id}`);
+  }
   const { status, data, error } = useQuery(["posts"], () => getPosts(true));
 
   if (status === "loading") {
@@ -19,7 +24,11 @@ export function Library() {
       <div className="browse-page-listings">
         {data.data.map((d) => {
           return (
-            <span className="post-preview" key={d.id}>
+            <span
+              onClick={() => navToPage(d.id)}
+              className="post-preview"
+              key={d.id}
+            >
               <img
                 className="post-image"
                 src={d.attributes.get_image_url}

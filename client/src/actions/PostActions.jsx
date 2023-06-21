@@ -3,7 +3,6 @@ const postsUrl = "http://localhost:3001/posts";
 function getConfig(user) {
   let config;
   if (user) {
-    console.log("true", user);
     const token = localStorage.getItem("token");
     config = {
       method: "GET",
@@ -14,7 +13,6 @@ function getConfig(user) {
       },
     };
   } else {
-    console.log("false", user);
     config = {
       method: "GET",
       headers: {
