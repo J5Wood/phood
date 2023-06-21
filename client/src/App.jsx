@@ -14,6 +14,7 @@ import { NewPostPage } from "./routes/new-post/NewPostPage";
 import { Post } from "./routes/post/Post";
 import { Library } from "./routes/library/Library";
 import { RequireAuth } from "./helpers/RequireAuth";
+import { RestaurantPage } from "./routes/restaurant/RestaurantPage";
 
 function App() {
   const queryClient = new QueryClient();
@@ -61,6 +62,14 @@ function App() {
       element: (
         <RequireAuth>
           <Layout children={<Browse />} />
+        </RequireAuth>
+      ),
+    },
+    {
+      path: "/restaurant/:id",
+      element: (
+        <RequireAuth>
+          <Layout children={<RestaurantPage />} />
         </RequireAuth>
       ),
     },
