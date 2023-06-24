@@ -66,7 +66,7 @@ function App() {
       ),
     },
     {
-      path: "/restaurant/:id",
+      path: "/restaurants/:id",
       element: (
         <RequireAuth>
           <Layout children={<RestaurantPage />} />

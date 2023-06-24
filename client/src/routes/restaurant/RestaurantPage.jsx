@@ -9,6 +9,16 @@ export function RestaurantPage() {
     getRestaurant(params.id)
   );
 
+  function displayDishes(dishes) {
+    return dishes.map((dish) => {
+      return (
+        <span className="dish-thumbnail" key={dish.id}>
+          <h3>{dish.name}</h3>
+        </span>
+      );
+    });
+  }
+
   if (status === "loading") {
     return <h2>Loading...</h2>;
   }
@@ -17,12 +27,13 @@ export function RestaurantPage() {
     return <p>{error}</p>;
   }
 
-  const { name, address } = data.attributes;
+  const { name, address, dishes } = data.attributes;
 
   return (
     <div className="restaurant-page">
       <h2>{name}</h2>
       <p>{address}</p>
+      {displayDishes(dishes)}
     </div>
   );
 }
